@@ -1,0 +1,34 @@
+<div class="mat-elevation-z8" *ngIf="tableDataAvailable">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="referenceDates">
+        <th mat-header-cell *matHeaderCellDef> Reference Dates </th>
+        <td mat-cell *matCellDef="let element"> {{element.referenceDates | momentPipe: 'dddd D MMM YYYY' }} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="benchMark_1">
+        <th mat-header-cell *matHeaderCellDef> Benchmark 1 </th>
+        <td mat-cell *matCellDef="let element"> {{element.benchMark_1}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="benchMark_2">
+        <th mat-header-cell *matHeaderCellDef> Benchmark 2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.benchMark_2}} </td>
+      </ng-container>
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+  <!-- <mat-spinner [diameter]="70" *ngIf="!finishedTime" class="center"></mat-spinner> -->
+
+  <div *ngIf="!welcome" class="center">Welcome!</div>

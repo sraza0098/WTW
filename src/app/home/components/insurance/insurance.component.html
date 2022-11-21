@@ -1,0 +1,26 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <app-slider 
+            [isMeasurement]="screenSliderSwitch['measurement']" 
+            [isResults]="screenSliderSwitch['results']">
+
+            <app-measurement *ngIf="screenSliderSwitch['measurement']"></app-measurement>
+            <app-results *ngIf="screenSliderSwitch['results']"></app-results>
+        </app-slider>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+        <app-table></app-table>
+        <div class="example-button-container">
+            <button mat-mini-fab aria-label="Example icon button with a home icon" color="primary" (click)="togglePanel(drawer,'measurement')" class="fab-icon-list measure-fab">
+              <mat-icon>layers</mat-icon>
+            </button>
+            <button mat-mini-fab aria-label="Example icon button with a home icon" color="primary" (click)="togglePanel(drawer,'results')" class="fab-icon-list result-fab">
+                <mat-icon>trending_down</mat-icon>
+            </button>
+            <button mat-mini-fab aria-label="Example icon button with a home icon" color="primary" (click)="togglePanel(drawer,'close')" class="fab-icon-list close-fab"  *ngIf="drawer.opened">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-drawer-container>

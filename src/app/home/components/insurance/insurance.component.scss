@@ -1,0 +1,33 @@
+.example-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    width: 30%;
+    background-color: white;
+  }
+  
+.fab-icon-list{
+    position: absolute; 
+    right: 10px;
+}
+
+.measure-fab{
+    top: 20px;
+}
+
+.result-fab{
+    top: 80px;
+}
+
+.close-fab{
+    top: 140px;
+}

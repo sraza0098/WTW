@@ -1,0 +1,44 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="form-inputs">
+        <mat-label>Main Limit</mat-label>
+        <input matInput [formControl]="mainLimitFormControl" [errorStateMatcher]="matcher" placeholder="usually entered in millions of £, e.g. £2,000,000)" required>
+        <mat-error *ngIf="mainLimitFormControl.hasError('required')">
+            Main Limit is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="mainRetentionFormControl.hasError('mainRetention') && !mainRetentionFormControl.hasError('required')">
+            Please enter the Main Retention
+        </mat-error>
+    </mat-form-field><br/>
+
+    <mat-form-field class="example-full-width" appearance="fill" class="form-inputs">
+        <mat-label>Main Retention</mat-label>
+        <input type="mainRetention" matInput [formControl]="mainRetentionFormControl" [errorStateMatcher]="matcher"
+        placeholder="usually entered in millions of £, e.g. £2,000,000)" required>
+        <mat-error *ngIf="mainRetentionFormControl.hasError('mainRetention') && !mainRetentionFormControl.hasError('required')">
+          Please enter the Main Retention
+        </mat-error>
+        <mat-error *ngIf="mainRetentionFormControl.hasError('required')">
+            Main Retention is <strong>required</strong>
+        </mat-error>
+    </mat-form-field><br/>
+
+    <mat-form-field appearance="fill" class="form-inputs">
+        <mat-label>Type of Execution</mat-label>
+            <mat-label>Execution Type</mat-label>
+            <mat-select [formControl]="executionTypeFormControl" required>
+                <mat-option *ngFor="let execution of executionTypes" [value]="execution.value">
+                {{execution.viewValue}}
+                </mat-option>
+            </mat-select>
+          <mat-error *ngIf="executionTypeFormControl.hasError('required')">
+            Execution is <strong>required</strong>
+          </mat-error>     
+    </mat-form-field><br />
+    
+      <button type="submit" mat-raised-button color="primary" style="margin-left:20px;margin-right: 20px;">Submit</button>
+      <button mat-raised-button color="primary" (click)="formReset()">Reset</button>
+    </form>
